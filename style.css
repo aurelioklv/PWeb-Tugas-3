@@ -1,3 +1,12 @@
+:root {
+    --bg-light: #ECDBBA;
+    --bg-dark: #10162F;
+    --accent-1: #F900BF;
+    --accent-2: #F6F54D;
+    --accent-3: #00FFD1;
+    --sidebar-menu: #7F8487;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,4 +14,106 @@
     border: none;
     text-decoration: none;
     scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Noto Sans', sans-serif;
+    color: black;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 5%;
+    background-color: var(--bg-dark);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99999;
+}
+
+.navbar .navbar-logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #fff;
+}
+
+.navbar .navbar-nav a {
+    display: inline-block;
+    padding: 0.5rem;
+    margin: 0 1.2rem;
+    border-radius: 6px;
+    font-size: 1.4rem;
+    color: #fff;
+}
+
+.navbar .navbar-nav a:after {
+    display: block;
+    content: '';
+    border-bottom: solid 3px var(--accent-3);
+    transform: scaleX(0);
+    transition: transform 200ms ease-in-out;
+    transform-origin: 100% 50%;
+}
+
+.navbar .navbar-nav a:hover:after {
+    transform: scaleX(1);
+    transform-origin: 0% 50%;
+}
+
+.navbar .navbar-extra a {
+    color: #fff;
+    margin: 0 0.3rem;
+}
+
+.navbar .navbar-extra a:hover {
+    color: var(--accent-3);
+}
+
+#hamburger-menu {
+    display: none;
+    /* color: var(--sidebar-menu); */
+}
+
+/* Media Queries */
+
+@media (max-width: 1280px) {
+    html {
+        font-size: 80%;
+    }
+}
+
+@media (max-width: 800px) {
+    html {
+        font-size: 70%;
+    }
+
+    #hamburger-menu {
+        display: inline-block;
+    }
+
+    .navbar .navbar-nav {
+        position: absolute;
+        top: 100%;
+        right: -100%;
+        width: 20rem;
+        height: 40vh;
+        border-bottom-left-radius: 10px;
+        background-color: var(--sidebar-menu);
+        transition: 0.4s;
+    }
+
+    .navbar .navbar-nav.active {
+        right: 0;
+    }
+
+    .navbar .navbar-nav a {
+        display: block;
+        margin: 1.5rem;
+        padding: 0.6rem;
+        border-radius: 4px;
+        /* color: var(--accent-2); */
+    }
 }
